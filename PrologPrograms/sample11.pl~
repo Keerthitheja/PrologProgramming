@@ -1,0 +1,30 @@
+% This buffer is for notes you don't want to save.
+% If you want to create a file, visit that file with C-x C-f,
+% then enter the text in that file's own buffer q(Z,X,Y,b) :- s(date(X,Y),k).
+
+predecessor(X,Y) :-
+    parent(X,Y).
+predecessor(X,Y) :-
+    predecessor(Z,Y); parent(X,Z).
+
+parent(pam,bob).
+parent(tom,bob).
+parent(tom,liz).
+parent(bob,ann).
+parent(bob,pat).
+parent(pat,jim).
+
+add([X],L0,[X|L0]).
+
+addone([],[]).
+addone(L1,L2):-
+    L1=[H1|T1],
+    L2=[H2|T2],
+    H2 is H1+1,
+    addone(T1,T2).
+
+length_1([],0).
+%length_1([X], 1).
+length_1( [H | T] , L) :-
+    length_1(T,L1),
+    L is L1 +1 .

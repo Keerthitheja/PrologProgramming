@@ -1,0 +1,15 @@
+% This buffer is for notes you don't want to save.
+% If you want to create a file, visit that file with C-x C-f,
+% then enter the text in that file's own buffer.
+
+remove_all(_, [], []).
+remove_all(El, [El|Tail], Tail2):-
+	remove_all(El, Tail, Tail2).
+remove_all(El, [Head|Tail], [Head|Tail2]):-
+	not(El = Head),
+	remove_all(El, Tail, Tail2).
+
+
+last(X, [X]).
+last(X, [_|Z]):-
+	last(X, Z).
