@@ -1,0 +1,4 @@
+append_1([],L,L).
+   append_1(List,L2,[H|L3])  :-
+    List = [H|T],
+    append_1(T,L2,L3).

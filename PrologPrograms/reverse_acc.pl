@@ -1,0 +1,14 @@
+% This buffer is for notes you don't want to save.
+% If you want to create a file, visit that file with C-x C-f,
+% then enter the text in that file's own buffer.
+
+reverse(List,Reversed):-
+    reverse_acc(List,[],Reversed).
+
+reverse_acc([],X,X).
+
+reverse_acc(List,Result_acc,Result):-
+    List = [H|Tail],
+    reverse_acc(Tail, Result_acc1, Result),
+    Result_acc1 = [H | Result_acc].
+

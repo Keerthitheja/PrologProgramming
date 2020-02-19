@@ -1,0 +1,9 @@
+fibo(N,Fib):-
+	fib(1,N,0,1,Fib).
+
+fib(N,N,_,Result,Result).
+fib(Count,N,PreviousFib,CurrentFib,Result):-
+	Count < N,
+	NextCount is Count + 1,
+	NextFib is CurrentFib + PreviousFib,
+        fib(NextCount,N,CurrentFib,NextFib,Result).

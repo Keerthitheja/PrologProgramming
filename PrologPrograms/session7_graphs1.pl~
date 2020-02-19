@@ -1,0 +1,3 @@
+p(Graph,Node):-
+    member(Parent/Node,Graph), write(Parent),nl,!, fail.
+p(Graph,Node):- write('end').

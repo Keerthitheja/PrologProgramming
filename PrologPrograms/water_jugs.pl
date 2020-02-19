@@ -1,0 +1,22 @@
+required_liters(8).
+max_liters_1(15).
+max_liters_2(16).
+% solution found when required nb of liters in J1 or J2
+is_solution(J1/_) :-
+required_liters(J1).
+is_solution(_/J2) :-
+required_liters(J2).
+try_action(_/J2, 0/J2). % empty jug 1
+try_action(J1/_, J1/0). % empty jug 2
+try_action(_/J2, M1/J2) :- max_liters_1(M1). % completely fill J1
+try_action(J1/_, J1/M2) :- max_liters_2(M2). % completely fill J2
+% empty J1 in J2 as far as possible
+try_action(J1/J2, NewJ1/NewJ2) :-
+max_liters_2(M2),
+NewJ2 is min(J2 + J1, M2),
+NewJ1 is max(0, J1 - (M2 - J2)).
+% empty J2 in J1 as far as possible
+try_action(J1/J2, NewJ1/NewJ2) :-
+max_liters_1(M1),
+NewJ1 is min(J1 + J2, M1),
+NewJ2 is max(0, J2 - (M1 - J1)).

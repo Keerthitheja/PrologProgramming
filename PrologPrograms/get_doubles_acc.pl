@@ -1,0 +1,15 @@
+get_doubles(List,Result):-
+    get_doubles_acc(List,[],Result).
+
+get_doubles_acc([],Result,Result).
+get_doubles_acc(List,Result_acc,Result):-
+    List = [H | Tail],
+    member(H,Tail),
+    !,
+    Result_acc1 = [H | Result_acc],
+
+    get_doubles_acc(Tail, Result_acc1, Result).
+
+get_doubles_acc(List,Result_acc,Result):-
+    List = [_|Tail],
+    get_doubles_acc(Tail,Result_acc,Result).
